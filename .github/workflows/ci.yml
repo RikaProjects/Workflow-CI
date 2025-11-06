@@ -1,15 +1,29 @@
 name: MLflow CI Pipeline
-on: [push, pull_request]
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
   train-model:
     runs-on: ubuntu-latest
+    
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
         python-version: '3.9'
+        
     - name: Install dependencies
-      run: pip install mlflow scikit-learn pandas numpy
+      run: |
+        python -m pip install --upgrade pip
+        pip install mlflow scikit-learn pandas numpy matplotlib seaborn joblib
+        
     - name: Train with MLflow
       run: |
         cd MLProject
