@@ -24,7 +24,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install mlflow scikit-learn pandas numpy matplotlib seaborn joblib
         
-    - name: Train with MLflow
+    - name: Train Model
       run: |
         cd MLProject
-        mlflow run . --experiment-name GitHub-Actions-Experiment
+        python modelling.py
