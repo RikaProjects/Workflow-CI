@@ -14,7 +14,6 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import os
 
 # Set MLflow tracking
-mlflow.set_tracking_uri("file:///mlruns")  # Local storage
 mlflow.set_experiment("Heart_Disease_Prediction_Rika")
 
 def load_data():
@@ -83,4 +82,5 @@ if __name__ == "__main__":
     # Optional: Save model locally (bukan requirement MLflow)
     import joblib
     joblib.dump(model, 'heart_disease_model.pkl')
+
     print("Model saved locally as 'heart_disease_model.pkl'")
